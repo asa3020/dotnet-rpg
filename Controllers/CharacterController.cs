@@ -22,10 +22,20 @@ namespace dotnet_rpg.Controllers
             return Ok(Characters);
         }
 
-        [HttpGet("getSingle")]
+        [HttpGet("{id}")]
 
-        public ActionResult<Character> GetSingle(int Id){
-            return Ok(Characters.FirstOrDefault(c => c.Id == Id));
+        public ActionResult<Character> GetSingle(int id){
+            return Ok(Characters.FirstOrDefault(c => c.Id == id));
         }
+
+        [HttpPost]
+
+        public ActionResult<List<Character>> CreateCharacter (Character character){
+            Characters.Add(character);
+            return Characters;
+        }  
+
+                   
+        
     }
 }
